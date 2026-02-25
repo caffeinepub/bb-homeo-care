@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useRouterState } from '@tanstack/react-router';
-import { Menu, X, Leaf, Phone, MapPin, LogIn, LogOut, Lock } from 'lucide-react';
+import { Menu, X, Phone, MapPin, LogIn, LogOut, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useInternetIdentity } from '@/hooks/useInternetIdentity';
 
@@ -33,18 +33,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="min-h-screen flex flex-col bg-background">
             {/* Header */}
             <header className="sticky top-0 z-50 bg-card border-b border-border shadow-xs">
-                <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-3">
+                <div className="container mx-auto px-4 py-2 flex items-center justify-between gap-3">
                     {/* Logo */}
-                    <Link to="/" className="flex items-center gap-3 group shrink-0">
+                    <Link to="/" className="flex items-center shrink-0 group">
                         <img
-                            src="/assets/generated/bbhomeocare-logo.dim_400x200.png"
-                            alt="BB Homeo Care Logo"
-                            className="h-12 w-auto object-contain"
+                            src="/assets/generated/bb-homeo-care-logo.dim_512x512.png"
+                            alt="BB Homeo Care – Balanced Being"
+                            className="h-9 md:h-12 w-auto object-contain transition-opacity group-hover:opacity-90"
                         />
                     </Link>
 
                     {/* Desktop Nav */}
-                    <nav className="hidden md:flex items-center gap-1 flex-1">
+                    <nav className="hidden md:flex items-center gap-1 flex-1 ml-4">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.path}
@@ -52,7 +52,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                                     currentPath === link.path
                                         ? 'bg-primary/10 text-primary font-semibold'
-                                        : 'text-foreground/70 hover:text-foreground hover:bg-accent'
+                                        : 'text-foreground/70 hover:text-primary hover:bg-primary/5'
                                 }`}
                             >
                                 {link.label}
@@ -119,7 +119,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                                     currentPath === link.path
                                         ? 'bg-primary/10 text-primary font-semibold'
-                                        : 'text-foreground/70 hover:text-foreground hover:bg-accent'
+                                        : 'text-foreground/70 hover:text-primary hover:bg-primary/5'
                                 }`}
                             >
                                 {link.label}
@@ -176,14 +176,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* Brand */}
                         <div>
-                            <div className="flex items-center gap-2 mb-3">
-                                <Leaf className="h-5 w-5 text-primary" />
-                                <span className="font-serif font-semibold text-lg text-primary-foreground">BB Homeo Care</span>
+                            <div className="flex items-center gap-3 mb-3">
+                                <img
+                                    src="/assets/generated/bb-homeo-care-logo.dim_512x512.png"
+                                    alt="BB Homeo Care – Balanced Being"
+                                    className="h-10 w-auto object-contain brightness-0 invert opacity-90"
+                                />
                             </div>
-                            <p className="text-sm text-primary-foreground/70 italic">
+                            <p className="text-sm text-primary-foreground/70 italic mt-2">
                                 "We heal you inside out."
                             </p>
-                            <p className="text-xs text-primary-foreground/50 mt-2">
+                            <p className="text-xs text-primary-foreground/50 mt-1">
                                 Professional Homeopathic Clinic
                             </p>
                         </div>

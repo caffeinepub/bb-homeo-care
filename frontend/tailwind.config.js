@@ -53,6 +53,12 @@ export default {
                     DEFAULT: 'oklch(var(--card))',
                     foreground: 'oklch(var(--card-foreground))'
                 },
+                sandy: {
+                    DEFAULT: 'oklch(var(--sandy))',
+                },
+                teal: {
+                    DEFAULT: 'oklch(var(--teal))',
+                },
                 chart: {
                     1: 'oklch(var(--chart-1))',
                     2: 'oklch(var(--chart-2))',
@@ -80,8 +86,8 @@ export default {
             },
             boxShadow: {
                 xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
-                card: '0 2px 12px 0 oklch(0.48 0.14 155 / 0.08)',
-                'card-hover': '0 8px 24px 0 oklch(0.48 0.14 155 / 0.15)',
+                card: '0 2px 12px 0 oklch(0.52 0.08 145 / 0.08)',
+                'card-hover': '0 8px 24px 0 oklch(0.52 0.08 145 / 0.15)',
             },
             keyframes: {
                 'accordion-down': {

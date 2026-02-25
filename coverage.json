@@ -1,59 +1,75 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-25T16:33:58.852Z",
+  "generatedAt": "2026-02-25T16:49:59.238Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 3,
-    "implemented": 3,
+    "total": 4,
+    "implemented": 4,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Protect the Patient Database page so that only authenticated users (logged in via Internet Identity) can view or interact with it. Unauthenticated visitors must see a locked/access-denied state with a prominent 'Login with Internet Identity' button and cannot see any patient records or the add-patient form.",
+        "summary": "Generate and save the BB Homeo Care logo as a static asset at frontend/public/assets/generated/bb-homeo-care-logo.png, recreating the uploaded logo: a circular emblem with interlocking leaf/petal shapes in sage green, muted teal/slate blue, and warm sandy beige, with a small green sprout and two dots at the center, enclosed in a thin green circle outline. Below the emblem, the text 'BB HOMEO CARE' in spaced sage-green uppercase letters and 'BALANCED BEING' in smaller warm sandy/peach uppercase letters. White/light grey background.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/PatientDatabase.tsx"
+          "frontend/public/assets/generated/bb-homeo-care-logo.dim_512x512.png"
         ],
         "matchedFiles": [
-          "frontend/src/pages/PatientDatabase.tsx"
+          "frontend/public/assets/generated/bb-homeo-care-logo.dim_512x512.png"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Protect the Bookings List page so that only authenticated users (logged in via Internet Identity) can view it. Unauthenticated visitors must see a locked/access-denied state with a prominent 'Login with Internet Identity' button and cannot see any booking records.",
+        "summary": "Replace the current text-only brand name in the Layout header with the BB Homeo Care logo image (frontend/public/assets/generated/bb-homeo-care-logo.png). Display the logo at an appropriate header size (height ~48px on desktop, ~36px on mobile) with alt text 'BB Homeo Care – Balanced Being'. The logo should link to the home page.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/BookingsList.tsx"
+          "frontend/src/components/Layout.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/BookingsList.tsx"
+          "frontend/src/components/Layout.tsx"
         ]
       },
       {
         "id": "REQ-3",
-        "summary": "Add a Login/Logout control in the shared Layout header. When the user is not authenticated, show a 'Login' button that triggers Internet Identity login. When authenticated, show the user's principal (abbreviated) and a 'Logout' button. Use the existing useInternetIdentity hook.",
+        "summary": "Update the site's color theme to align with the logo palette: primary/accent green should use the sage green from the logo (approx. #7A9E7E or equivalent OKLCH), secondary accent should use the warm sandy/peach tone (approx. #D4A57A or equivalent), and a muted teal/slate (approx. #5E7E8A or equivalent) for highlights. Apply these consistently across buttons, headings, navigation active states, and the hero section on the Home page so the overall site feel matches the calm, natural, holistic brand of the logo.",
         "status": "implemented",
         "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
           "frontend/src/components/Layout.tsx"
         ],
         "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
           "frontend/src/components/Layout.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Update the Home page hero section (frontend/src/pages/Home.tsx) to display the BB Homeo Care logo prominently above the hero headline, and update any hardcoded clinic name text to 'BB Homeo Care' with the tagline 'Balanced Being' displayed beneath it in the sandy/peach accent color.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Home.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Home.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
     "build-request.json",
-    "build-template/README.md",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
+    "frontend/public/assets/generated/bb-homeo-care-logo.dim_512x512.png",
     "frontend/src/components/Layout.tsx",
-    "frontend/src/pages/BookingsList.tsx",
-    "frontend/src/pages/PatientDatabase.tsx",
+    "frontend/src/index.css",
+    "frontend/src/pages/Home.tsx",
+    "frontend/tailwind.config.js",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

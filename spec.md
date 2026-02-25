@@ -1,13 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Lock the Patient Database and Bookings List pages behind Internet Identity authentication, so only logged-in users can access admin data.
+**Goal:** Add the BB Homeo Care logo as a site asset and update the branding, color theme, and hero section to match the logo's natural, holistic palette.
 
 **Planned changes:**
-- Add a Login/Logout control in the shared Layout header using the existing `useInternetIdentity` hook; show abbreviated principal and Logout button when authenticated, Login button when not.
-- Protect the Patient Database page (`/patient-database`): unauthenticated visitors see a lock/access-denied screen with a prominent "Login with Internet Identity" button instead of patient records or the add-patient form.
-- Protect the Bookings List page (`/bookings-list`): unauthenticated visitors see a lock/access-denied screen with a prominent "Login with Internet Identity" button instead of booking cards.
-- After successful login, both protected pages become fully accessible; logging out re-locks them.
-- The public Booking form (`/booking`) remains accessible to unauthenticated users.
+- Save the BB Homeo Care logo as a static asset at `frontend/public/assets/generated/bb-homeo-care-logo.png`
+- Replace the text-only brand name in the Layout header with the logo image (height ~48px desktop, ~36px mobile), linking to the home page
+- Update the site's color theme to use sage green (~#7A9E7E), warm sandy/peach (~#D4A57A), and muted teal/slate (~#5E7E8A) across buttons, headings, nav active states, and the hero section
+- Update the Home page hero section to display the logo above the headline, set the clinic name to "BB Homeo Care", and add the tagline "Balanced Being" in the sandy/peach accent color
 
-**User-visible outcome:** Admin pages (Patient Database and Bookings List) are hidden behind an Internet Identity login gate. The header always shows the current auth state, and only authenticated users can view or interact with admin data.
+**User-visible outcome:** The site header and home page hero display the BB Homeo Care logo, and the overall color scheme reflects the calm, natural brand palette from the uploaded logo.

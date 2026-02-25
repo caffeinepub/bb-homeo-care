@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { CalendarPlus, Users, Leaf, Shield, Heart, Star, ArrowRight, CheckCircle } from 'lucide-react';
+import { CalendarPlus, Leaf, Shield, Heart, Star, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -46,20 +46,28 @@ export default function Home() {
                         alt="BB Homeo Care Hero"
                         className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 hero-gradient opacity-80" />
+                    <div className="absolute inset-0 hero-gradient opacity-85" />
                 </div>
 
                 <div className="relative z-10 container mx-auto px-4 py-20 md:py-32 text-center">
-                    <div className="flex justify-center mb-6">
-                        <img
-                            src="/assets/generated/bbhomeocare-logo.dim_400x200.png"
-                            alt="BB Homeo Care"
-                            className="h-24 md:h-32 w-auto object-contain drop-shadow-lg bg-white/90 rounded-xl px-4 py-2"
-                        />
+                    {/* Logo in hero */}
+                    <div className="flex justify-center mb-8">
+                        <div className="bg-white/95 rounded-2xl px-6 py-4 shadow-xl inline-flex items-center justify-center">
+                            <img
+                                src="/assets/generated/bb-homeo-care-logo.dim_512x512.png"
+                                alt="BB Homeo Care – Balanced Being"
+                                className="h-28 md:h-36 w-auto object-contain"
+                            />
+                        </div>
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4 drop-shadow-md">
+
+                    <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-3 drop-shadow-md">
                         BB Homeo Care
                     </h1>
+                    <p className="text-lg md:text-xl font-semibold tracking-widest uppercase mb-3 drop-shadow"
+                       style={{ color: 'oklch(0.88 0.07 65)' }}>
+                        Balanced Being
+                    </p>
                     <p className="text-xl md:text-2xl text-white/90 italic font-light mb-2 drop-shadow">
                         "We heal you inside out."
                     </p>
@@ -111,7 +119,7 @@ export default function Home() {
             </section>
 
             {/* Treatments Section */}
-            <section className="bg-secondary/40 py-16">
+            <section className="bg-secondary/30 py-16">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                         <div>
@@ -119,49 +127,42 @@ export default function Home() {
                                 Conditions We Treat
                             </h2>
                             <p className="text-muted-foreground mb-6 leading-relaxed">
-                                At BB Homeo Care, we address a wide range of acute and chronic conditions using
-                                time-tested homeopathic principles combined with modern clinical understanding.
+                                At BB Homeo Care, we address a wide range of acute and chronic conditions
+                                using individualized homeopathic remedies that stimulate your body's natural healing.
                             </p>
                             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 {highlights.map((item, idx) => (
-                                    <li key={idx} className="flex items-center gap-2 text-sm text-foreground">
+                                    <li key={idx} className="flex items-center gap-2 text-sm text-foreground/80">
                                         <CheckCircle className="h-4 w-4 text-primary shrink-0" />
                                         {item}
                                     </li>
                                 ))}
                             </ul>
                         </div>
+
                         <div className="flex flex-col gap-4">
-                            <Card className="card-hover border-border shadow-card">
-                                <CardContent className="p-6 flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                                        <CalendarPlus className="h-6 w-6 text-primary" />
-                                    </div>
-                                    <div>
-                                        <h4 className="font-semibold text-foreground mb-1">Book a Consultation</h4>
-                                        <p className="text-sm text-muted-foreground mb-3">
-                                            Schedule your appointment with our experienced homeopathic doctors.
-                                        </p>
-                                        <Button asChild size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                                            <Link to="/booking">Book Now</Link>
-                                        </Button>
-                                    </div>
+                            <Card className="border-l-4 border-l-primary bg-card shadow-card">
+                                <CardContent className="py-5 px-6">
+                                    <h3 className="font-semibold text-foreground mb-1">Holistic Approach</h3>
+                                    <p className="text-sm text-muted-foreground">
+                                        We treat the root cause, not just the symptoms — addressing physical, mental, and emotional well-being.
+                                    </p>
                                 </CardContent>
                             </Card>
-                            <Card className="card-hover border-border shadow-card">
-                                <CardContent className="p-6 flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                                        <Users className="h-6 w-6 text-primary" />
-                                    </div>
-                                    <div>
-                                        <h4 className="font-semibold text-foreground mb-1">Patient Database</h4>
-                                        <p className="text-sm text-muted-foreground mb-3">
-                                            Manage patient records securely with our digital database system.
-                                        </p>
-                                        <Button asChild size="sm" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                                            <Link to="/patients">View Records</Link>
-                                        </Button>
-                                    </div>
+                            <Card className="border-l-4 border-l-sandy bg-card shadow-card">
+                                <CardContent className="py-5 px-6">
+                                    <h3 className="font-semibold text-foreground mb-1">Balanced Being</h3>
+                                    <p className="text-sm text-muted-foreground">
+                                        Our philosophy of "Balanced Being" guides every treatment — restoring harmony between body, mind, and spirit.
+                                    </p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border-l-4 border-l-teal bg-card shadow-card">
+                                <CardContent className="py-5 px-6">
+                                    <h3 className="font-semibold text-foreground mb-1">Long-term Wellness</h3>
+                                    <p className="text-sm text-muted-foreground">
+                                        Our goal is lasting health improvement, not temporary relief — building resilience from within.
+                                    </p>
                                 </CardContent>
                             </Card>
                         </div>
@@ -169,21 +170,37 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* CTA Banner */}
-            <section className="hero-gradient py-14">
-                <div className="container mx-auto px-4 text-center">
-                    <h2 className="text-3xl font-serif font-bold text-white mb-3">
-                        Start Your Healing Journey Today
+            {/* CTA Section */}
+            <section className="container mx-auto px-4 py-16 text-center">
+                <div className="max-w-2xl mx-auto">
+                    <div className="flex justify-center mb-6">
+                        <img
+                            src="/assets/generated/bb-homeo-care-logo.dim_512x512.png"
+                            alt="BB Homeo Care – Balanced Being"
+                            className="h-16 w-auto object-contain opacity-80"
+                        />
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
+                        Begin Your Healing Journey
                     </h2>
-                    <p className="text-white/80 mb-8 max-w-lg mx-auto">
-                        Experience the gentle power of homeopathy. Book your consultation at BB Homeo Care, Kalaburagi.
+                    <p className="text-muted-foreground mb-8 leading-relaxed">
+                        Take the first step towards balanced health. Book a consultation with our experienced
+                        homeopathic practitioners today.
                     </p>
-                    <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 font-semibold shadow-lg px-10">
-                        <Link to="/booking">
-                            <CalendarPlus className="h-5 w-5 mr-2" />
-                            Book Your Appointment
-                        </Link>
-                    </Button>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 shadow-card">
+                            <Link to="/booking">
+                                <CalendarPlus className="h-5 w-5 mr-2" />
+                                Book Consultation
+                            </Link>
+                        </Button>
+                        <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5 font-semibold px-8">
+                            <Link to="/about">
+                                About Our Clinic
+                                <ArrowRight className="h-5 w-5 ml-2" />
+                            </Link>
+                        </Button>
+                    </div>
                 </div>
             </section>
         </div>

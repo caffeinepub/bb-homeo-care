@@ -1,56 +1,84 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Lock Patient Database and Booking List behind Internet Identity authentication",
+  "title": "Add BB Homeo Care logo and update site branding",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Protect the Patient Database page with Internet Identity authentication, showing a lock screen to unauthenticated users",
+      "summary": "Generate and save the BB Homeo Care logo as a static asset matching the uploaded reference with circular emblem, interlocking leaf shapes in sage green/teal/sandy beige, green sprout center, and 'BB HOMEO CARE' / 'BALANCED BEING' text",
       "acceptanceCriteria": [
-        "Visiting /patient-database while logged out shows a lock screen or access-denied message, not patient records.",
-        "A 'Login with Internet Identity' button is clearly visible on the lock screen.",
-        "After successful login the patient records table and add-patient dialog are fully accessible.",
-        "Logging out redirects away from or re-locks the Patient Database page."
+        "Logo image is saved to frontend/public/assets/generated/bb-homeo-care-logo.png",
+        "Logo visually matches the uploaded reference: circular leaf emblem with sage green, teal, and sandy beige tones",
+        "Text 'BB HOMEO CARE' and 'BALANCED BEING' are legible in the logo"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/PatientDatabase.tsx",
-          "operation": "modify",
-          "description": "Wrap the existing Patient Database UI with an authentication guard. Import useInternetIdentity hook to check isAuthenticated status. When not authenticated, render a centered lock screen with a card containing an access-denied message, a lock icon, and a 'Login with Internet Identity' button that calls the login() function. When authenticated, render the existing search bar, patient table, and add-patient dialog as before. Ensure the component handles loading state gracefully."
+          "path": "frontend/public/assets/generated/bb-homeo-care-logo.dim_512x512.png",
+          "operation": "create",
+          "description": "Save the generated BB Homeo Care logo image as specified in imageRequirements: circular holistic wellness logo with interlocking leaf and petal shapes in sage green, muted teal-slate, and warm sandy beige, small green sprout with two dots at center, enclosed in thin sage green circle outline; text 'BB HOMEO CARE' in wide-spaced sage green uppercase sans-serif and 'BALANCED BEING' in smaller warm sandy/peach uppercase, on clean white background"
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Protect the Bookings List page with Internet Identity authentication, showing a lock screen to unauthenticated users",
+      "summary": "Replace text-only brand name in Layout header with the BB Homeo Care logo image, sized appropriately for desktop and mobile, linking to home page",
       "acceptanceCriteria": [
-        "Visiting /bookings-list while logged out shows a lock screen or access-denied message, not booking cards.",
-        "A 'Login with Internet Identity' button is clearly visible on the lock screen.",
-        "After successful login the bookings list with all booking cards is fully accessible.",
-        "Logging out redirects away from or re-locks the Bookings List page."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/BookingsList.tsx",
-          "operation": "modify",
-          "description": "Wrap the existing Bookings List UI with an authentication guard. Import useInternetIdentity hook to check isAuthenticated status. When not authenticated, render a centered lock screen with a card containing an access-denied message, a lock icon, and a 'Login with Internet Identity' button that calls the login() function. When authenticated, render the existing bookings grid with loading skeletons, error handling, and refresh button as before. Ensure the component handles loading state gracefully."
-        }
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "summary": "Add Login/Logout control in the Layout header displaying user principal and authentication state",
-      "acceptanceCriteria": [
-        "Header displays a Login button when not authenticated.",
-        "Header displays abbreviated principal and a Logout button when authenticated.",
-        "Clicking Login opens the Internet Identity flow.",
-        "Clicking Logout ends the session and the protected pages become locked again."
+        "Header displays the logo image instead of plain text branding",
+        "Logo is sized appropriately for desktop and mobile viewports",
+        "Clicking the logo navigates to the home page",
+        "Alt text is set to 'BB Homeo Care – Balanced Being'"
       ],
       "file_operations": [
         {
           "path": "frontend/src/components/Layout.tsx",
           "operation": "modify",
-          "description": "Import useInternetIdentity hook and add authentication controls to the header. In the desktop navigation section (after the nav links), conditionally render: when not authenticated, a 'Login' button that calls login(); when authenticated, display the user's principal (abbreviated to first 8 and last 4 characters with ellipsis) and a 'Logout' button that calls logout(). Apply consistent styling with existing navigation elements. Repeat the same logic in the mobile sheet menu section to maintain feature parity across viewport sizes."
+          "description": "Replace the text-only 'BB Homeo Care' brand name in the header with an img element loading frontend/public/assets/generated/bb-homeo-care-logo.dim_512x512.png. Set alt text to 'BB Homeo Care – Balanced Being'. Apply responsive sizing: height 48px on desktop, 36px on mobile using Tailwind classes (e.g., h-9 md:h-12). Wrap the img in a Link component pointing to '/' so clicking the logo navigates to the home page. Ensure the logo is visible in both desktop and mobile navigation layouts"
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Update site color theme to align with logo palette: sage green primary, warm sandy/peach secondary, muted teal highlights, applied across buttons, headings, navigation, and hero section",
+      "acceptanceCriteria": [
+        "Primary green color updated to sage green matching the logo palette",
+        "Sandy/peach accent color introduced and used on secondary elements",
+        "Muted teal accent applied to highlight elements",
+        "Buttons, headings, and nav active states use the updated palette",
+        "Home page hero section reflects the refreshed brand colors",
+        "No harsh or clashing colors; the overall aesthetic remains calm and natural"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update CSS custom properties in the :root and .dark selectors to align with the logo palette. Replace the current --primary color (green) with sage green (approximately OKLCH 65% 0.08 145 or #7A9E7E equivalent). Add a new --secondary custom property for the warm sandy/peach tone (approximately OKLCH 75% 0.06 60 or #D4A57A equivalent). Add a new --accent custom property for the muted teal/slate (approximately OKLCH 55% 0.05 220 or #5E7E8A equivalent). Ensure the updated palette works in both light and dark modes, maintaining a calm, natural, holistic aesthetic"
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend the Tailwind theme to expose the new CSS custom properties as utility classes. Add 'secondary' and 'accent' to the colors object, mapping them to the corresponding CSS variables (var(--secondary) and var(--accent)). This allows usage like bg-secondary, text-accent, border-accent throughout the app. Ensure the existing 'primary' mapping continues to reference var(--primary) which now contains the sage green value"
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Update navigation active states to use the new color tokens. Replace any hardcoded green values with the updated primary (sage green) for active nav links. Apply the muted teal accent color (text-accent or border-accent) to hover states or subtle highlights in the navigation menu to reinforce the logo palette"
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Update Home page hero section to display the BB Homeo Care logo prominently above the headline, update clinic name to 'BB Homeo Care', and add 'Balanced Being' tagline in sandy/peach accent color",
+      "acceptanceCriteria": [
+        "Logo image appears in the hero section above the headline",
+        "Clinic name reads 'BB Homeo Care'",
+        "Tagline 'Balanced Being' appears beneath the clinic name in the sandy/peach accent color",
+        "Hero layout remains clean and readable on all screen sizes"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "modify",
+          "description": "Update the hero section to display the BB Homeo Care logo image (frontend/public/assets/generated/bb-homeo-care-logo.dim_512x512.png) prominently above the hero headline. Add an img element with appropriate sizing (e.g., h-24 md:h-32 or larger) and alt text 'BB Homeo Care – Balanced Being'. Update any hardcoded clinic name text to 'BB Homeo Care'. Add a tagline element displaying 'Balanced Being' beneath the clinic name, styled with the sandy/peach accent color (text-secondary) and smaller font size. Apply the updated sage green, sandy/peach, and muted teal colors from the theme to buttons, headings, and background elements in the hero section to create a cohesive brand experience. Ensure responsive layout remains clean and readable on mobile and desktop"
         }
       ]
     }

@@ -1,80 +1,100 @@
 {
   "kind": "build_request",
-  "title": "Lock Patient Database and Booking List behind Internet Identity authentication",
+  "title": "Add BB Homeo Care logo and update site branding",
   "projectName": "BB Homeo Care",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Protect the Patient Database page so that only authenticated users (logged in via Internet Identity) can view or interact with it. Unauthenticated visitors must see a locked/access-denied state with a prominent 'Login with Internet Identity' button and cannot see any patient records or the add-patient form.",
+      "text": "Generate and save the BB Homeo Care logo as a static asset at frontend/public/assets/generated/bb-homeo-care-logo.png, recreating the uploaded logo: a circular emblem with interlocking leaf/petal shapes in sage green, muted teal/slate blue, and warm sandy beige, with a small green sprout and two dots at the center, enclosed in a thin green circle outline. Below the emblem, the text 'BB HOMEO CARE' in spaced sage-green uppercase letters and 'BALANCED BEING' in smaller warm sandy/peach uppercase letters. White/light grey background.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-recent"
+          "msg-8"
         ],
         "quotes": [
-          "i want to lock patient data base and booking list"
+          "add this as logo and make it accordingly in our site bb means balanced being"
         ]
       },
       "acceptanceCriteria": [
-        "Visiting /patient-database while logged out shows a lock screen or access-denied message, not patient records.",
-        "A 'Login with Internet Identity' button is clearly visible on the lock screen.",
-        "After successful login the patient records table and add-patient dialog are fully accessible.",
-        "Logging out redirects away from or re-locks the Patient Database page."
+        "Logo image is saved to frontend/public/assets/generated/bb-homeo-care-logo.png",
+        "Logo visually matches the uploaded reference: circular leaf emblem with sage green, teal, and sandy beige tones",
+        "Text 'BB HOMEO CARE' and 'BALANCED BEING' are legible in the logo"
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Protect the Bookings List page so that only authenticated users (logged in via Internet Identity) can view it. Unauthenticated visitors must see a locked/access-denied state with a prominent 'Login with Internet Identity' button and cannot see any booking records.",
+      "text": "Replace the current text-only brand name in the Layout header with the BB Homeo Care logo image (frontend/public/assets/generated/bb-homeo-care-logo.png). Display the logo at an appropriate header size (height ~48px on desktop, ~36px on mobile) with alt text 'BB Homeo Care – Balanced Being'. The logo should link to the home page.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-recent"
+          "msg-8"
         ],
         "quotes": [
-          "i want to lock patient data base and booking list"
+          "add this as logo and make it accordingly in our site"
         ]
       },
       "acceptanceCriteria": [
-        "Visiting /bookings-list while logged out shows a lock screen or access-denied message, not booking cards.",
-        "A 'Login with Internet Identity' button is clearly visible on the lock screen.",
-        "After successful login the bookings list with all booking cards is fully accessible.",
-        "Logging out redirects away from or re-locks the Bookings List page."
+        "Header displays the logo image instead of plain text branding",
+        "Logo is sized appropriately for desktop and mobile viewports",
+        "Clicking the logo navigates to the home page",
+        "Alt text is set to 'BB Homeo Care – Balanced Being'"
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Add a Login/Logout control in the shared Layout header. When the user is not authenticated, show a 'Login' button that triggers Internet Identity login. When authenticated, show the user's principal (abbreviated) and a 'Logout' button. Use the existing useInternetIdentity hook.",
+      "text": "Update the site's color theme to align with the logo palette: primary/accent green should use the sage green from the logo (approx. #7A9E7E or equivalent OKLCH), secondary accent should use the warm sandy/peach tone (approx. #D4A57A or equivalent), and a muted teal/slate (approx. #5E7E8A or equivalent) for highlights. Apply these consistently across buttons, headings, navigation active states, and the hero section on the Home page so the overall site feel matches the calm, natural, holistic brand of the logo.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-recent"
+          "msg-8"
         ],
         "quotes": [
-          "i want to lock patient data base and booking list"
+          "make it accordingly in our site bb means balanced being"
         ]
       },
       "acceptanceCriteria": [
-        "Header displays a Login button when not authenticated.",
-        "Header displays abbreviated principal and a Logout button when authenticated.",
-        "Clicking Login opens the Internet Identity flow.",
-        "Clicking Logout ends the session and the protected pages become locked again."
+        "Primary green color updated to sage green matching the logo palette",
+        "Sandy/peach accent color introduced and used on secondary elements",
+        "Muted teal accent applied to highlight elements",
+        "Buttons, headings, and nav active states use the updated palette",
+        "Home page hero section reflects the refreshed brand colors",
+        "No harsh or clashing colors; the overall aesthetic remains calm and natural"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Update the Home page hero section (frontend/src/pages/Home.tsx) to display the BB Homeo Care logo prominently above the hero headline, and update any hardcoded clinic name text to 'BB Homeo Care' with the tagline 'Balanced Being' displayed beneath it in the sandy/peach accent color.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ],
+        "quotes": [
+          "bb means balanced being"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Logo image appears in the hero section above the headline",
+        "Clinic name reads 'BB Homeo Care'",
+        "Tagline 'Balanced Being' appears beneath the clinic name in the sandy/peach accent color",
+        "Hero layout remains clean and readable on all screen sizes"
       ]
     }
   ],
   "constraints": [
-    "Do not modify any files under frontend/src/hooks/useInternetIdentity.ts or frontend/src/hooks/useActor.ts — use them as-is.",
-    "The public Booking form page (/booking) must remain accessible to unauthenticated users — only the admin-facing Bookings List and Patient Database are locked.",
-    "Do not change the backend data model or access control — restriction is frontend-only."
+    "Do not modify files under frontend/src/hooks/ or frontend/src/components/ui/",
+    "Logo image must be served as a static asset from frontend/public/assets/generated/, not through the backend"
   ],
   "nonGoals": [
-    "Backend-level authentication or canister access control",
-    "Role-based access control beyond simple authenticated/unauthenticated",
-    "Locking the public Booking submission form",
-    "Publishing to any app store"
+    "Changing backend logic or data models",
+    "Adding new pages or features",
+    "Uploading or hosting the original WhatsApp image directly — a regenerated version will be used"
   ],
   "imageRequirements": {
-    "required": [],
+    "required": [
+      "Circular holistic wellness logo with interlocking leaf and petal shapes in sage green, muted teal-slate, and warm sandy beige, a small green sprout with two dots at the center, enclosed in a thin sage green circle outline; below the emblem the text 'BB HOMEO CARE' in wide-spaced sage green uppercase sans-serif letters and 'BALANCED BEING' in smaller warm sandy/peach uppercase letters, on a clean white background (bb-homeo-care-logo.dim_512x512.png)"
+    ],
     "edits": []
   }
 }
