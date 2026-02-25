@@ -1,0 +1,62 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-protect-the-patient-database-page-so-that-only-authenticated-users-logged-in-via-internet-identity-can-view-or-interact-with-it-unauthenticated-visitors-must-see-a-locked-access-denied-state-with-a-prominent-login-with-internet-identity-button-and-cannot-see-any-patient-records-or-the-add-patient-form",
+      "featureTitle": "Protect the Patient Database page so that only authenticated users (logged in via Internet Identity) can view or interact with it. Unauthenticated visitors must see a locked/access-denied state with a prominent 'Login with Internet Identity' button and cannot see any patient records or the add-patient form.",
+      "files": [
+        "frontend/src/pages/PatientDatabase.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-protect-the-bookings-list-page-so-that-only-authenticated-users-logged-in-via-internet-identity-can-view-it-unauthenticated-visitors-must-see-a-locked-access-denied-state-with-a-prominent-login-with-internet-identity-button-and-cannot-see-any-booking-records",
+      "featureTitle": "Protect the Bookings List page so that only authenticated users (logged in via Internet Identity) can view it. Unauthenticated visitors must see a locked/access-denied state with a prominent 'Login with Internet Identity' button and cannot see any booking records.",
+      "files": [
+        "frontend/src/pages/BookingsList.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-login-logout-control-in-the-shared-layout-header-when-the-user-is-not-authenticated-show-a-login-button-that-triggers-internet-identity-login-when-authenticated-show-the-user-s-principal-abbreviated-and-a-logout-button-use-the-existing-useinternetidentity-hook",
+      "featureTitle": "Add a Login/Logout control in the shared Layout header. When the user is not authenticated, show a 'Login' button that triggers Internet Identity login. When authenticated, show the user's principal (abbreviated) and a 'Logout' button. Use the existing useInternetIdentity hook.",
+      "files": [
+        "frontend/src/components/Layout.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

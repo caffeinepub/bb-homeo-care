@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Clinic management app with patient database, appointment dashboard, and treatment logs. User wants to lock/restrict access to the patient database and booking list.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-protect-the-patient-database-page-so-that-only-authenticated-users-logged-in-via-internet-identity-can-view-or-interact-with-it-unauthenticated-visitors-must-see-a-locked-access-denied-state-with-a-prominent-login-with-internet-identity-button-and-cannot-see-any-patient-records-or-the-add-patient-form",
+      "title": "Protect the Patient Database page so that only authenticated users (logged in via Internet Identity) can view or interact with it. Unauthenticated visitors must see a locked/access-denied state with a prominent 'Login with Internet Identity' button and cannot see any patient records or the add-patient form.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-protect-the-bookings-list-page-so-that-only-authenticated-users-logged-in-via-internet-identity-can-view-it-unauthenticated-visitors-must-see-a-locked-access-denied-state-with-a-prominent-login-with-internet-identity-button-and-cannot-see-any-booking-records",
+      "title": "Protect the Bookings List page so that only authenticated users (logged in via Internet Identity) can view it. Unauthenticated visitors must see a locked/access-denied state with a prominent 'Login with Internet Identity' button and cannot see any booking records.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-login-logout-control-in-the-shared-layout-header-when-the-user-is-not-authenticated-show-a-login-button-that-triggers-internet-identity-login-when-authenticated-show-the-user-s-principal-abbreviated-and-a-logout-button-use-the-existing-useinternetidentity-hook",
+      "title": "Add a Login/Logout control in the shared Layout header. When the user is not authenticated, show a 'Login' button that triggers Internet Identity login. When authenticated, show the user's principal (abbreviated) and a 'Logout' button. Use the existing useInternetIdentity hook.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Lock/restrict access to the patient database",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Lock/restrict access to the booking/appointment list",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Clinic Management App",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

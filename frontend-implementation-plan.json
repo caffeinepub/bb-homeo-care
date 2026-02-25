@@ -1,0 +1,58 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Lock Patient Database and Booking List behind Internet Identity authentication",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Protect the Patient Database page with Internet Identity authentication, showing a lock screen to unauthenticated users",
+      "acceptanceCriteria": [
+        "Visiting /patient-database while logged out shows a lock screen or access-denied message, not patient records.",
+        "A 'Login with Internet Identity' button is clearly visible on the lock screen.",
+        "After successful login the patient records table and add-patient dialog are fully accessible.",
+        "Logging out redirects away from or re-locks the Patient Database page."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/PatientDatabase.tsx",
+          "operation": "modify",
+          "description": "Wrap the existing Patient Database UI with an authentication guard. Import useInternetIdentity hook to check isAuthenticated status. When not authenticated, render a centered lock screen with a card containing an access-denied message, a lock icon, and a 'Login with Internet Identity' button that calls the login() function. When authenticated, render the existing search bar, patient table, and add-patient dialog as before. Ensure the component handles loading state gracefully."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Protect the Bookings List page with Internet Identity authentication, showing a lock screen to unauthenticated users",
+      "acceptanceCriteria": [
+        "Visiting /bookings-list while logged out shows a lock screen or access-denied message, not booking cards.",
+        "A 'Login with Internet Identity' button is clearly visible on the lock screen.",
+        "After successful login the bookings list with all booking cards is fully accessible.",
+        "Logging out redirects away from or re-locks the Bookings List page."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/BookingsList.tsx",
+          "operation": "modify",
+          "description": "Wrap the existing Bookings List UI with an authentication guard. Import useInternetIdentity hook to check isAuthenticated status. When not authenticated, render a centered lock screen with a card containing an access-denied message, a lock icon, and a 'Login with Internet Identity' button that calls the login() function. When authenticated, render the existing bookings grid with loading skeletons, error handling, and refresh button as before. Ensure the component handles loading state gracefully."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add Login/Logout control in the Layout header displaying user principal and authentication state",
+      "acceptanceCriteria": [
+        "Header displays a Login button when not authenticated.",
+        "Header displays abbreviated principal and a Logout button when authenticated.",
+        "Clicking Login opens the Internet Identity flow.",
+        "Clicking Logout ends the session and the protected pages become locked again."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Import useInternetIdentity hook and add authentication controls to the header. In the desktop navigation section (after the nav links), conditionally render: when not authenticated, a 'Login' button that calls login(); when authenticated, display the user's principal (abbreviated to first 8 and last 4 characters with ellipsis) and a 'Logout' button that calls logout(). Apply consistent styling with existing navigation elements. Repeat the same logic in the mobile sheet menu section to maintain feature parity across viewport sizes."
+        }
+      ]
+    }
+  ]
+}

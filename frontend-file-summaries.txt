@@ -1,0 +1,12 @@
+{
+  "frontend/src/index.css": "Global styles with a professional green medical theme using OKLCH color tokens, Google Fonts (Inter + Playfair Display), and utility classes for hero gradients and card hover effects.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with custom font families (Inter/Playfair Display), medical green color palette, enhanced border radii, and card shadow tokens.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations — booking submission, fetching all bookings, patient search, patient record lookup, and patient creation with cache invalidation.",
+  "frontend/src/components/Layout.tsx": "Shared layout with sticky header, responsive mobile menu, footer, and Internet Identity auth controls — shows Login button when logged out, abbreviated principal + Logout button when authenticated, in both desktop nav and mobile menu.",
+  "frontend/src/pages/Home.tsx": "Home page featuring a hero banner with logo and tagline \"We heal you inside out.\", feature cards, conditions treated section, and CTA buttons linking to booking and patient database.",
+  "frontend/src/pages/Booking.tsx": "Consultation booking form page with fields for Patient Name, Mobile, Date, Time, and Symptoms; includes validation, loading state, success confirmation, and backend submission.",
+  "frontend/src/pages/BookingsList.tsx": "Admin bookings list page guarded by Internet Identity authentication — shows a lock screen with a \"Login with Internet Identity\" button to unauthenticated users, and the full bookings card grid with refresh functionality to authenticated users.",
+  "frontend/src/pages/PatientDatabase.tsx": "Patient database page guarded by Internet Identity authentication — shows a lock screen with a \"Login with Internet Identity\" button to unauthenticated users, and the full searchable patient table with Add Patient dialog to authenticated users.",
+  "frontend/src/pages/About.tsx": "About Us page describing BB Homeo Care's mission, core values, homeopathic approach steps, conditions treated, and clinic location/hours in Kalaburagi.",
+  "frontend/src/App.tsx": "Main app component setting up TanStack Router with routes for Home, Booking, BookingsList (/admin/bookings), PatientDatabase, and About, all wrapped in the shared Layout."
+}

@@ -1,0 +1,80 @@
+{
+  "kind": "build_request",
+  "title": "Lock Patient Database and Booking List behind Internet Identity authentication",
+  "projectName": "BB Homeo Care",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Protect the Patient Database page so that only authenticated users (logged in via Internet Identity) can view or interact with it. Unauthenticated visitors must see a locked/access-denied state with a prominent 'Login with Internet Identity' button and cannot see any patient records or the add-patient form.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent"
+        ],
+        "quotes": [
+          "i want to lock patient data base and booking list"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Visiting /patient-database while logged out shows a lock screen or access-denied message, not patient records.",
+        "A 'Login with Internet Identity' button is clearly visible on the lock screen.",
+        "After successful login the patient records table and add-patient dialog are fully accessible.",
+        "Logging out redirects away from or re-locks the Patient Database page."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Protect the Bookings List page so that only authenticated users (logged in via Internet Identity) can view it. Unauthenticated visitors must see a locked/access-denied state with a prominent 'Login with Internet Identity' button and cannot see any booking records.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent"
+        ],
+        "quotes": [
+          "i want to lock patient data base and booking list"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Visiting /bookings-list while logged out shows a lock screen or access-denied message, not booking cards.",
+        "A 'Login with Internet Identity' button is clearly visible on the lock screen.",
+        "After successful login the bookings list with all booking cards is fully accessible.",
+        "Logging out redirects away from or re-locks the Bookings List page."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add a Login/Logout control in the shared Layout header. When the user is not authenticated, show a 'Login' button that triggers Internet Identity login. When authenticated, show the user's principal (abbreviated) and a 'Logout' button. Use the existing useInternetIdentity hook.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent"
+        ],
+        "quotes": [
+          "i want to lock patient data base and booking list"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Header displays a Login button when not authenticated.",
+        "Header displays abbreviated principal and a Logout button when authenticated.",
+        "Clicking Login opens the Internet Identity flow.",
+        "Clicking Logout ends the session and the protected pages become locked again."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify any files under frontend/src/hooks/useInternetIdentity.ts or frontend/src/hooks/useActor.ts — use them as-is.",
+    "The public Booking form page (/booking) must remain accessible to unauthenticated users — only the admin-facing Bookings List and Patient Database are locked.",
+    "Do not change the backend data model or access control — restriction is frontend-only."
+  ],
+  "nonGoals": [
+    "Backend-level authentication or canister access control",
+    "Role-based access control beyond simple authenticated/unauthenticated",
+    "Locking the public Booking submission form",
+    "Publishing to any app store"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
